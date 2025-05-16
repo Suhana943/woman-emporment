@@ -1,1395 +1,605 @@
-
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-   </head>
-   <style>
-     :root {
-      --color-bg: #f47e0f00;
-      --color-text: #dc1919;
-      --color-primary: #ff3366;
-      --color-secondary: #3366ff;
-      --color-tertiary: #33ddff;
-      --color-accent: #ffcc00;
-      --card-radius: 16px;
-      --card-bg: rgba(229, 220, 220, 0.03);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --card-shadow: 0 15px 30px -12px rgba(53, 31, 31, 0.5);
-      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      }
-    body
-    {
-
-      display: flexbox;
-      background-color: #e9e8f0;
-      width: auto;
-
-    }
-      h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      line-height: 1.1;
-      background: linear-gradient(
-      to right,
-      var(--color-text),
-      rgba(138, 108, 108, 0.7)
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      background-color: #1a70c7;
-}
-
- 
-      .gradient-blob {
-      position: absolute;
-      border-radius: 100%;
-      filter: blur(40px);
-      opacity: 0.3;
-      animation: float 20s infinite alternate ease-in-out;
-      }
-      .gradient-blob:nth-child(1) {
-      background: linear-gradient(
-      to right,
-      var(--color-primary),
-      var(--color-secondary)
-      );
-      width: 150vw;
-      height: 150vw;
-      top: -100%;
-      left: -25%;
-      animation-delay: 0s;
-      }
-      .gradient-blob:nth-child(2) {
-      background: linear-gradient(
-      to right,
-      var(--color-tertiary),
-      var(--color-secondary)
-      );
-      width: 150vw;
-      height: 150vw;
-      bottom: -100%;
-      right: -25%;
-      animation-delay: -5s;
-      }
-      /* Center the text and apply styles */
-.typing {
-    font-family: Arial, sans-serif;
-    font-size: 40px;
-    font-weight: bold;
-    color: (445deg, #cbcac6, #8d2248); /* Customize color */
-    text-align: center; /* Center text horizontally */
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 3D effect */
-    letter-spacing: 2px;
-    z-index: 10;
-}
-/* For laptops and big screens */
-@media (min-width: 768px) {
-  body {
-    font-size: 18px;
-  }
-}
-
-/* For mobile screens */
-@media (max-width: 767px) {
-  body {
-    font-size: 14px;
-  }
-}
-
-
-/* Optional: Style for other h3 elements */
-h3 {
-    font-family: Arial, sans-serif;
-    font-size: 22px;
-    color: #3498db;
-    text-align: center;
-}
-
-      .gradient-blob:nth-child(3) {
-      background: linear-gradient(
-      to right,
-      var(--color-accent),
-      var(--color-primary)
-      );
-      width: 100vw;
-      height: 100vw;
-      top: 30%;
-      left: -50%;
-      animation-delay: -10s;
-      }
-      @keyframes float {
-      0% {
-      transform: translate(0, 0) scale(1);
-      }
-      50% {
-      transform: translate(2%, 2%) scale(1.02);
-      }
-      100% {
-      transform: translate(-2%, -2%) scale(0.98);
-      }
-      }
-      main {
-      width: 100%;
-      padding: 2rem 1rem;
-      position: relative;
-      z-index: 1;
-      }
-      h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      line-height: 1.1;
-      background: linear-gradient(
-      to right,
-      var(--color-text),
-      rgba(138, 108, 108, 0.7)
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      }
-      .subtitle {
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      opacity: 0.8;
-      }
-      .cards-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      perspective: 1000px;
-      }
-      .card {
-      position: relative;
-      height: 350px;
-      border-radius: var(--card-radius);
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      box-shadow: var(--card-shadow);
-      transform-style: preserve-3d;
-      transition: var(--transition);
-      cursor: pointer;
-      overflow: hidden;
-    
-      -webkit-backdrop-filter: blur(10px);
-      }
-      .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-      circle at var(--x, 50%) var(--y, 50%),
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 50%
-      );
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      }
-      .card:hover::before {
-      opacity: 1;
-      }
-      .card-content {
-      position: relative;
-      height: 50%;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      transform-style: preserve-3d;
-      transition: transform 0.5s ease;
-      }
-      .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-weight: 200;
-      transform: translateZ(20px);
-      background: linear-gradient(
-      to right,
-      var(--color-text),
-      rgba(37, 37, 100, 0.8)
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      }
-      
-      .card p {
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      transform: translateZ(15px);
-      }
-      .card-footer {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transform: translateZ(15px);
-      }
-      .card-button {
-      padding: 0.6rem 1.2rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 100px;
-      color: var(--color-text);
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      }
-      .card-button:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-      }
-      .card-icon {
-      font-size: 1.25rem;
-      opacity: 0.7;
-      transition: transform 0.3s ease;
-      }
-      .card:hover .card-icon {
-      transform: translateX(5px);
-      opacity: 1;
-      }
-      @media (min-width: 640px) {
-      main {
-      padding: 5vh 2rem;
-      }
-      h1 {
-      font-size: 3.5rem;
-      margin-bottom: 0.75rem;
-      }
-      .subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 4rem;
-      }
-     /* Cards Container */
-     .card-container {
-  display: grid;
-  grid-template-columns: repeat(33, 1fr); /* 33 equally spaced cards */
-  gap: 10px;
-}
-
-
-
-
-/* Announcement Bar */
-.announcement-bar {
-  background-color: #d59d1b;
-  color: #010108;
-  text-align: center;
-  padding: 10px 0;
-  overflow: hidden;
-}
-
-.announcement-slider {
-  display: flex;
-  animation: slide 15s infinite;
-}
-
-.announcement-slider p {
-  margin: 0;
-  flex: 0 0 100%;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(0%);
-  }
-  33% {
-    transform: translateX(-100%);
-  }
-  66% {
-    transform: translateX(-200%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #d2d9e0;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-}
-
-.search-bar input {
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-  margin-right: 5px;
-}
-
-.search-bar button {
-  background-color: #f8cca2;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.logo h1{
-  color: #020001;
-
-}
-
-.icons {
-  display: flex;
-  gap: 15px;
-
-}
-
-.icons a {
-  color: #b2a109b6;
-  font-size: 20px;
-}
-
-.icons a:hover {
-  color: #f8cca2;
-}
-.icons i {
-  font-size: 24px; /* Adjust size as needed */
-  color: #d41616; /* Ensure icons are visible */
-}
-
-
-
-.menu-bar ul li a:hover {
-  color: #9e7517;
-}
-/* Menu Bar */
-.menu-bar {
-  background-color: #f8cca2;
-  padding: 10px 20px;
-  text-align: center; /* Center the content */
-}
-
-.menu-bar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: inline-block; /* Make the ul inline-block to center it */
-}
-
-.menu-bar ul li {
-  display: inline-block; /* Display list items horizontally */
-  margin: 0 10px; /* Add spacing between menu items */
-}
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-
-  nav {
-    position: relative;
-    perspective: 600px;
-  }
-
-  .cool > li > a {
-    color: rgb(228, 228, 213);
-    text-decoration: none;
-    font-size: 20px;
-    background: #efecec;
-    padding:10px 20px;
-    display: inline-block;
-    margin:20px;
-    border-radius:5px;
-  }
-
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  
-  a.button {
-    background:black;
-    display: block;
-    padding:10px;
-    color:rgb(154, 18, 18);
-    margin-bottom: 10px;
-  }
-
-
-  /* Matches Twitter, TWITTER, twitter, tWitter, TWiTTeR... */
-  .button[href*=twitter] { background: #01070a; }
-  .button[href*=linkedin.com] { background: #1884bb; }
-  .button[href*=eleftheriabatsou] { background: #ffeb3b; }
-  .button[href*=github] { background: #f4efef; }
-  .button[href*=codepen] { background: #343338; } 
-
-.menu-bar ul li a {
-  color: #4990e8;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 16px; /* Adjust font size as needed */
-}
-
-.menu-bar ul li a:hover {
-  color: #9e9172;
-}
-/* Boxicons CDN required in HTML head */
-@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-nav {
-  background: #5c758c;
-  color: white;
-  width: 100%;
-  max-height: 25%;
-  position: relative;
-  font-family: 'Poppins', sans-serif;
-}
-
-.menu-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-}
-
-.logo a {
-  color: rgb(127, 94, 94);
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-}
-
-.nav-links ul.links {
-  list-style: none;
-  display: flex;
-  gap: 1.7rem;
-}
-
-.nav-links ul.links li {
-  position: relative;
-}
-
-.nav-links ul.links li a {
-  color: rgb(10, 0, 0);
-  text-decoration: none;
-  padding: 0.5rem;
-  transition: 0.3s;
-}
-
-.nav-links ul.links li a:hover {
-  color: #01030f;
-}
-
-/* Dropdown styles */
-.sub-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #6c9fcb;
-  display: none;
-  flex-direction: column;
-  min-width: 180px;
-  z-index: 1000;
-}
-
-.links li:hover > .sub-menu {
-  display: flex;
-}
-
-.sub-menu li {
-  width: 100%;
-}
-
-.sub-menu li a {
-  padding: 0.75rem 1rem;
-  display: block;
-}
-
-.arrow {
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-/* More sub-menu (right aligned) */
-.more-sub-menu {
-  left: 100%;
-  top: 0;
-  position: absolute;
-  display: none;
-  background: #3b4c5a;
-}
-
-.more:hover > .more-sub-menu {
-  display: block;
-}
-
-/* Mobile styles */
-.bx-menu, .bx-x {
-  font-size: 1.8rem;
-  color: rgb(135, 98, 98);
-  cursor: pointer;
-  display: none;
-}
-
-.sidebar-logo {
-  display: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #2c3e50;
-    flex-direction: column;
-    display: none;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .bx-menu {
-    display: block;
-  }
-
-  .sidebar-logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  .links {
-    flex-direction: column;
-  }
-
-  .links li {
-    width: 100%;
-    text-align: left;
-  }
-
-  .sub-menu, .more-sub-menu {
-    position: relative;
-    top: 0;
-    left: 0;
-    background: #34495e;
-  }
-}
-
-
-
-   </style>
-   <body>
-  <!-- Announcement Bar -->
-<div class="announcement-bar">
-  <div class="announcement-slider">
-    <p>helping the local woman  </p>
-    <p> woman empowerment</p>
-  </div>
-</div>
-
-<!-- Header -->
-<header class="header">
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search products..." />
-    <button><i class="fas fa-search"></i></button>
-  </div>
-
-  <!-- Logo -->
-  <div class="logo">
-    <h1>FashionHub</h1>
-
-  </div>
-
-  <!-- Icons -->
-  <div class="icons">
-    <a href="#"><i class="fas fa-user"></i></a> <!-- User Login -->
-    <a href="#"><i class="fas fa-heart"></i></a> <!-- Wishlist -->
-    <a href="#"><i class="fas fa-shopping-cart"></i></a> <!-- Cart -->
-  </div>
-</header>
-
-
-
-<title>Follow Along Nav</title>
-</head>
-<body>
-  <nav>
-    <div class="manu-bar">
-      <i class='bx bx-menu'></i>
-      <div class="logo"><a href="#">FashionHub</a></div>
-      <div class="nav-links">
-        <div class="sidebar-logo">
-          <span class="logo-name">FashionHub</span>
-          <i class='bx bx-x' ></i>
-        </div>
-        <ul class="links">
-          <li><a href="#">HOME</a></li>
-          <li>
-            <a href="#">FashionHub</a>
-            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-            <ul class="htmlCss-sub-menu sub-menu">
-              <li><a href="#">Fashion Design</a></li>
-              <li><a href="#">Fashion sell</a></li>
-              <li><a href="#">Fashion buy</a></li>
-              <li class="more">
-                <span><a href="#">More</a>
-                <i class='bx bxs-chevron-right arrow more-arrow'></i>
-              </span>
-                <ul class="more-sub-menu sub-menu">
-                  <li><a href="#">Neumorphism</a></li>
-                  <li><a href="#">Pre-loader</a></li>
-                  <li><a href="#">Glassmorphism</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">SELL</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#"> sell information </a></li>
-              <li><a href="#"> sell prices</a></li>
-              <li><a href="#"> sell Card</a></li>
-              <li><a href="#"> </a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Fashion</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#">kurti</a></li>
-              <li><a href="#">half sleeve kurti</a></li>
-              <li><a href="#">Card Slider</a></li>
-              <li><a href="#">Blouses</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Customer Service</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#">about</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">call</a></li>
-              <li><a href="#">Finding location</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">order</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#">menu</a></li>
-              <li><a href="#">date</a></li>
-              <li><a href="#">order timing</a></li>
-              <li><a href="#">sevice</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"> gift</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#">selling</a></li>
-              <li><a href="#">selling in local woman</a></li>
-              <li><a href="#">Wonman  Fashion</a></li>
-              <li><a href="#"> man Fashion</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#"></a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#">Dynamic Clock</a></li>
-              <li><a href="#">Form Validation</a></li>
-              <li><a href="#">Card Slider</a></li>
-              <li><a href="#">Complete Website</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">DELIVERY</a>
-            <i class='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul class="js-sub-menu sub-menu">
-              <li><a href="#">call</a></li>
-              <li><a href="#">charge</a></li>
-              <li><a href="#">shoping time</a></li>
-              <li><a href="#">your gift</a></li>
-            </ul>
-          </li>
-        </ul>
-        <i class='bx bxs-chevron-down js-arrow arrow '></i>
-        <ul class="js-sub-menu sub-menu">
-          <li><a href="#">Dynamic Clock</a></li>
-          <li><a href="#">Form Validation</a></li>
-          <li><a href="#">Card Slider</a></li>
-          <li><a href="#">Complete Website</a></li>
-        </ul>
-      </li>
-    
-    </ul>
-    <i class='bx bxs-chevron-down js-arrow arrow '></i>
-    <ul class="js-sub-menu sub-menu">
-      <li><a href="#">new Fashion</a></li>
-      <li><a href="#">MX Player</a></li>
-      <li><a href="#">Custom</a></li>
-      <li><a href="#"> See less </a></li>
-    </ul>
-  </li>
-</div>
-<div class="dropdownBackground"></div>
-      <div class="top">
-        <div class="container">
-          <div class="logo">
-          </div>
-          
-            </ul>
-          </div>
-
-  </div>
-      </div>
-      
-        </div>
-      </div>
-    </div>
-  </nav>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  
-
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #faf4f4;
+        color: #fff;
+        font-family: 'Inter', Segoe UI, sans-serif;
+    }
+    canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .theme-selector::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    .theme-selector::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,0.3);
+        border-radius: 3px;
+    }
+    .theme-selector::-webkit-scrollbar-track {
+        background: rgba(224, 228, 231, 0.2);
+    }
+    .glassmorphic-panel {
+        background: rgba(30, 30, 45, 0.6);
+        backdrop-filter: blur(12px) saturate(180%);
+        -webkit-backdrop-filter: blur(12px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+    }
 </style>
 
-<script>
-  const triggers = document.querySelectorAll('.cool > li');
-  const background  = document.querySelector('.dropdownBackground');
-  const nav  = document.querySelector('.top');
+<div id="themeSelectorContainer" class="glassmorphic-panel absolute top-4 left-4 z-10 p-5 rounded-xl shadow-2xl max-w-xs sm:max-w-sm md:max-w-md max-h-[calc(100vh-2rem)] overflow-y-auto theme-selector">
+    <h2 class="text-xl font-semibold mb-4 text-white/90">Select Theme</h2>
+    <div id="themeButtons" class="grid grid-cols-1 gap-3">
+    </div>
+</div>
 
-  function handleEnter() {
-    this.classList.add('trigger-enter');
-    setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
-	//to find how small/big is the content
-    background.classList.add('open');
-
-    const dropdown = this.querySelector('.dropdown');
-    const dropdownCoords = dropdown.getBoundingClientRect();
-    const navCoords = nav.getBoundingClientRect();
-
-    const coords = {
-      height: dropdownCoords.height,
-      width: dropdownCoords.width,
-      top: dropdownCoords.top - navCoords.top,
-      left: dropdownCoords.left - navCoords.left
-    };
-
-    background.style.setProperty('width', `${coords.width}px`);
-    background.style.setProperty('height', `${coords.height}px`);
-    background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
   }
-
-  function handleLeave() {
-    this.classList.remove('trigger-enter', 'trigger-enter-active');
-    background.classList.remove('open');
-  }
-
-  triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
-  triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
+}
 </script>
+<script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
+    import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
-<!-- Menu Bar -->
+    let animationFrameId = null;
+    let scene, camera, renderer, composer, controls, clock;
+    let blackHole, haloMesh, starField, particleSystem, jetsGroup, lensingPass;
+    let pData;
 
+    const baseCfg = {
+        gravitationalStrength: 70,
+        eventHorizonSize: 2,
+        disk: { inner: 3, outer: 40, thickness: 2, count: 30000, baseSpeed: 0.92 },
+        jets: { length: 220, baseRadius: 1.4, tip: 0.4, speed: 2.5, opacity: 0.9 },
+        bloom: { strength: 1.0, radius: 0.6, threshold: 0.40 },
+        afterimageDamp: 0.93,
+        starCount: 60000,
+        autoRotate: true
+    };
+    let currentCfg = { ...baseCfg };
 
-<br>
-<br>
+    const themes = {
+        inferno: {
+            name: "Inferno",
+            halo: { c1: 0xffd65c, c2: 0x5a1200, strength: 1.2 },
+            diskParticles: { hueMin: 0.02, hueMax: 0.10, lightMin: 0.4, lightMax: 0.8 },
+            jets: { color1: 0xffb300, color2: 0xff2200 },
+            stars: { mainHueRange: [0.05, 0.12], secondaryHueRange: [0.0, 0.03] },
+            photonRing: { r: 1.0, g: 0.55, b: 0.15 },
+            focusRingColor: 'ring-orange-400'
+        },
+        earth: {
+    name: "Earth",
+    halo: { c1: 0x228b22, c2: 0x2e8b57, strength: 1.1 }, // Forest green to sea green
+    diskParticles: { hueMin: 0.25, hueMax: 0.45, lightMin: 0.4, lightMax: 0.8 }, // Green to yellow-green
+    jets: { color1: 0x1e90ff, color2: 0x4682b4 }, // Dodger blue to steel blue
+    stars: { mainHueRange: [0.2, 0.4], secondaryHueRange: [0.5, 0.6] }, // Earthy to aqua tones
+    photonRing: { r: 0.2, g: 0.6, b: 0.3 }, // Earthy green glow
+    focusRingColor: 'ring-green-500'
+}
+,
+        emerald: {
+            name: "Emerald",
+            halo: { c1: 0x00ff7f, c2: 0x008000, strength: 1.1 },
+            diskParticles: { hueMin: 0.25, hueMax: 0.4, lightMin: 0.4, lightMax: 0.75 },
+            jets: { color1: 0x7fff00, color2: 0x00ced1 },
+            stars: { mainHueRange: [0.2, 0.45], secondaryHueRange: [0.45, 0.55] },
+            photonRing: { r: 0.2, g: 1.0, b: 0.5 },
+            focusRingColor: 'ring-green-400'
+        },
+        glacial: {
+            name: "Glacial",
+            halo: { c1: 0xadd8e6, c2: 0x00008b, strength: 1.25 },
+            diskParticles: { hueMin: 0.5, hueMax: 0.6, lightMin: 0.5, lightMax: 0.9 },
+            jets: { color1: 0x87cefa, color2: 0x1e90ff },
+            stars: { mainHueRange: [0.55, 0.65], secondaryHueRange: [0.0, 0.0], whiteStarBias: 0.3 },
+            photonRing: { r: 0.5, g: 0.8, b: 1.0 },
+            focusRingColor: 'ring-sky-400'
+        },
+        crimson: {
+            name: "Crimson Void",
+            halo: { c1: 0xdc143c, c2: 0x8b0000, strength: 1.3 },
+            diskParticles: { hueMin: 0.95, hueMax: 1.0, secondHueMin: 0.0, secondHueMax: 0.05, lightMin: 0.4, lightMax: 0.7 },
+            jets: { color1: 0xff4500, color2: 0x8b0000 },
+            stars: { mainHueRange: [0.9, 1.0], secondaryHueRange: [0.0, 0.05] },
+            photonRing: { r: 1.0, g: 0.2, b: 0.2 },
+            focusRingColor: 'ring-red-500'
+        },
+        krishna: {
+    name: "Krishna Realm",
+    halo: { c1: 0x4169e1, c2: 0x6a5acd, strength: 1.4 }, // Royal blue to slate blue (spiritual, serene)
+    diskParticles: { 
+        hueMin: 0.55, hueMax: 0.65, 
+        secondHueMin: 0.68, secondHueMax: 0.75, 
+        lightMin: 0.5, lightMax: 0.9 
+    }, // Blues to indigos, secondary peacock greens
+    jets: { color1: 0x00ced1, color2: 0x8a2be2 }, // Dark turquoise to blue violet (flute and aura)
+    stars: { 
+        mainHueRange: [0.55, 0.65], 
+        secondaryHueRange: [0.7, 0.8] 
+    }, // Calm blues and mystic violets
+    photonRing: { r: 0.3, g: 0.6, b: 1.0 }, // Radiant blue ring
+    focusRingColor: 'ring-blue-500'
+}
 
-<br>
-<br>
-<br>
+    };
+    let currentTheme = themes.inferno;
 
-<br>
-<br>
-<br>
+    init();
 
-  <h1 style="color: rgb(50, 22, 229);"><i>Woman Empowerment</i></h1>
-      
+    function init() {
+        clock = new THREE.Clock();
+        scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x000000, 0.006);
 
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 5000);
+        camera.position.set(0, currentCfg.disk.outer * 0.35, currentCfg.disk.outer * 1.5);
 
-    
+        renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
+        document.body.appendChild(renderer.domElement);
 
-      <h3 class="typing"></h3>
-         <h3></h3>
-         <script>
-          var typed = new Typed(".typing", {
-              strings: ["The local women are working we support ", " We support women working  in local businesses ", "Local women are selling clothes"],
-              typeSpeed: 100,
-              backSpeed: 70,
-              loop: true
-          });
-      </script>
+        controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; controls.dampingFactor = 0.03;
+        controls.minDistance = currentCfg.eventHorizonSize * 1.2;
+        controls.maxDistance = currentCfg.disk.outer * 6;
+        controls.autoRotate = currentCfg.autoRotate;
+        controls.autoRotateSpeed = 0.15;
 
+        composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        composer.addPass(new UnrealBloomPass(
+            new THREE.Vector2(window.innerWidth, window.innerHeight),
+            currentCfg.bloom.strength, currentCfg.bloom.radius, currentCfg.bloom.threshold
+        ));
+        composer.addPass(new AfterimagePass(currentCfg.afterimageDamp));
 
+        lensingPass = new ShaderPass(buildLensingShader());
+        composer.addPass(lensingPass);
 
- <p class="subtitle">
-          <i>
-          We are committed to women empowerment in the local area woman </i>
-        
-      </main>
-      <script>
-         document.addEventListener("DOMContentLoaded", () => {
-         const cards = document.querySelectorAll(".card");
-         const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-         
-         cards.forEach((card) => {
-         const content = card.querySelector(".card-content");
-         const rotationFactor =
-         parseFloat(card.getAttribute("data-rotation-factor")) || 2;
-         
-         if (!isTouchDevice) {
-         card.addEventListener("mousemove", (e) => {
-         const rect = card.getBoundingClientRect();
-         const x = e.clientX - rect.left;
-         const y = e.clientY - rect.top;
-         
-         const centerX = rect.width / 2;
-         const centerY = rect.height / 2;
-         const rotateY = (rotationFactor * (x - centerX)) / centerX;
-         const rotateX = (-rotationFactor * (y - centerY)) / centerY;
-         
-         content.style.transform = `
-           rotateX(${rotateX}deg) 
-           rotateY(${rotateY}deg)
-         `;
-         
-         card.style.setProperty("--x", `${(x / rect.width) * 100}%`);
-         card.style.setProperty("--y", `${(y / rect.height) * 100}%`);
-         });
-         
-         card.addEventListener("mouseleave", () => {
-         content.style.transform = "rotateX(0) rotateY(0)";
-         
-         content.style.transition = "transform 0.5s ease";
-         setTimeout(() => {
-         content.style.transition = "";
-         }, 500);
-         });
-         }
-         
-         const randomDelay = Math.random() * 2;
-         card.style.animation = `cardFloat 4s infinite alternate ease-in-out ${randomDelay}s`;
-         });
-         
-         const style = document.createElement("style");
-         style.textContent = `
-         @keyframes cardFloat {
-         0% {
-         transform: translateY(0);
-         }
-         100% {
-         transform: translateY(-5px);
-         }
-         }
-         
-         @media (min-width: 768px) {
-         @keyframes cardFloat {
-         0% {
-           transform: translateY(0);
-         }
-         100% {
-           transform: translateY(-8px);
-         }
-         }
-         }
-         
-         @media (min-width: 1024px) {
-         @keyframes cardFloat {
-         0% {
-           transform: translateY(0);
-         }
-         100% {
-           transform: translateY(-10px);
-         }
-         }
-         }
-         `;
-         document.head.appendChild(style);
-         
-         const buttons = document.querySelectorAll(".card-button");
-         buttons.forEach((button) => {
-         button.addEventListener("click", (e) => {
-         e.stopPropagation();
-         
-         const ripple = document.createElement("span");
-         ripple.classList.add("ripple");
-         button.appendChild(ripple);
-         
-         const rect = button.getBoundingClientRect();
-         const size = Math.max(rect.width, rect.height) * 2;
-         
-         ripple.style.width = ripple.style.height = `${size}px`;
-         ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-         ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-         
-         ripple.classList.add("active");
-         
-         setTimeout(() => {
-         ripple.remove();
-         }, 500);
-         });
-         });
-         
-         const rippleStyle = document.createElement("style");
-         rippleStyle.textContent = `
-         .card-button {
-         position: relative;
-         overflow: hidden;
-         }
-         
-         .ripple {
-         position: absolute;
-         background: rgba(255, 255, 255, 0.3);
-         border-radius: 50%;
-         transform: scale(0);
-         animation: ripple 0.5s linear;
-         pointer-events: none;
-         }
-         
-         @keyframes ripple {
-         to {
-         transform: scale(2);
-         opacity: 0;
-         }
-         }
-         `;
-         document.head.appendChild(rippleStyle);
-         });
-         
-      </script>
-   </body>
+        createBlackHole();
+        createHalo();
+        createStarField();
+        initParticles();
+        createJets();
+        setupThemeSelector();
 
+        window.addEventListener('resize', onResize);
 
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cards</title>
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600&display=swap" rel="stylesheet">
-  <style>
-   
-
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      gap: bottom;
-      margin: 0 auto;
+        window.onload = () => {
+            if (typeof animate === 'function' && !animationFrameId) {
+                 animate();
+            }
+        };
     }
 
-    figure.snip1278 {
-      position: relative;
-      overflow: hidden;
-      min-width: 30px;
-      max-width: 410px;
-      width: 75%;
-      background: #f6f3f3;
-      color: #ffffff;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgb(218, 215, 215);
+    function createBlackHole() {
+        if (blackHole) scene.remove(blackHole);
+      blackHole = new THREE.Mesh(
+          new THREE.SphereGeometry(1, 64, 64),
+           new THREE.MeshBasicMaterial({ color: 0x000000 })
+       );
+     blackHole.scale.setScalar(currentCfg.eventHorizonSize);
+       scene.add(blackHole);
+   }
+
+    function createHalo() {
+        if (haloMesh) scene.remove(haloMesh);
+       const geo = new THREE.PlaneGeometry(7, 7);
+        const mat = new THREE.ShaderMaterial({
+            uniforms: {
+                c1: { value: new THREE.Color(currentTheme.halo.c1) },
+                c2: { value: new THREE.Color(currentTheme.halo.c2) },
+                strength: { value: currentTheme.halo.strength }
+            },
+            transparent: true, blending: THREE.AdditiveBlending, depthWrite: false,
+            vertexShader: `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);} `,
+            fragmentShader: `varying vec2 vUv;uniform vec3 c1;uniform vec3 c2;uniform float strength;
+                void main(){float d=length(vUv-0.5)*2.0;float a=smoothstep(1.0,0.0,d)*strength;
+                gl_FragColor=vec4(mix(c1,c2,d),a*0.65);}`
+        });
+        haloMesh = new THREE.Mesh(geo, mat);
+        haloMesh.renderOrder = 2;
+        scene.add(haloMesh);
     }
 
-    figure.snip1278 * {
-      box-sizing: border-box;
-      transition: all 0.35s ease;
+    function createStarField() {
+        if (starField) {
+            scene.remove(starField);
+            starField.geometry.dispose();
+            starField.material.dispose();
+        }
+        const pos = new Float32Array(currentCfg.starCount * 3);
+        const col = new Float32Array(currentCfg.starCount * 3);
+        const c = new THREE.Color();
+
+        for (let i = 0; i < currentCfg.starCount; i++) {
+            const r = THREE.MathUtils.randFloat(700, 3500);
+            const t = Math.random() * Math.PI * 2;
+            const p = Math.acos(Math.random() * 2 - 1);
+            pos[i * 3] = r * Math.sin(p) * Math.cos(t);
+            pos[i * 3 + 1] = r * Math.sin(p) * Math.sin(t);
+            pos[i * 3 + 2] = r * Math.cos(p);
+
+            const rand = Math.random();
+            let hue, saturation, lightness;
+
+            if (currentTheme.stars.whiteStarBias && rand < currentTheme.stars.whiteStarBias) {
+                hue = 0; saturation = 0; lightness = THREE.MathUtils.randFloat(0.8, 1.0);
+            } else if (rand < 0.6 + (currentTheme.stars.whiteStarBias || 0) * 0.4 ) {
+                hue = THREE.MathUtils.randFloat(currentTheme.stars.mainHueRange[0], currentTheme.stars.mainHueRange[1]);
+                saturation = 1; lightness = THREE.MathUtils.randFloat(0.7, 0.95);
+            } else if (rand < 0.85 + (currentTheme.stars.whiteStarBias || 0) * 0.1 ) {
+                hue = 0; saturation = 0; lightness = THREE.MathUtils.randFloat(0.8, 1.0);
+                if(currentTheme.stars.secondaryHueRange){
+                    hue = THREE.MathUtils.randFloat(currentTheme.stars.secondaryHueRange[0], currentTheme.stars.secondaryHueRange[1]);
+                    saturation = 1; lightness = THREE.MathUtils.randFloat(0.6,0.8);
+                }
+            } else {
+                hue = THREE.MathUtils.randFloat(currentTheme.stars.mainHueRange[0], currentTheme.stars.mainHueRange[1]);
+                saturation = 0.8; lightness = THREE.MathUtils.randFloat(0.6,0.8);
+            }
+            c.setHSL(hue, saturation, lightness);
+            col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b;
+        }
+        const g = new THREE.BufferGeometry();
+        g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+        const m = new THREE.PointsMaterial({
+            vertexColors: true, size: 2.6, transparent: true, opacity: 0.95,
+            blending: THREE.AdditiveBlending, depthWrite: false
+        });
+        starField = new THREE.Points(g, m);
+        scene.add(starField);
     }
 
-    figure.snip1278 .image {
-      background-color: #357c74;
-      width: 60%;
-      overflow: hidden;
+    function initParticles() {
+        if (particleSystem) {
+             scene.remove(particleSystem);
+             particleSystem.geometry.dispose();
+             particleSystem.material.dispose();
+        }
+        const N = currentCfg.disk.count;
+        const posArr = new Float32Array(N * 3);
+        const velArr = new Float32Array(N * 3);
+        const colArr = new Float32Array(N * 3);
+        const lifeArr = new Float32Array(N);
+        const initRArr = new Float32Array(N);
+        const activeArr = new Uint8Array(N);
+        pData = { pos: posArr, vel: velArr, col: colArr, life: lifeArr, initR: initRArr, active: activeArr };
+
+        for (let i = 0; i < N; i++) {
+            resetParticle(i);
+            pData.active[i] = 1;
+        }
+        const g = new THREE.BufferGeometry();
+        g.setAttribute('position', new THREE.BufferAttribute(pData.pos, 3));
+        g.setAttribute('color', new THREE.BufferAttribute(pData.col, 3));
+        const m = new THREE.PointsMaterial({
+            size: 0.24, vertexColors: true, transparent: true, opacity: 0.88,
+            blending: THREE.AdditiveBlending, depthWrite: false
+        });
+        particleSystem = new THREE.Points(g, m);
+        scene.add(particleSystem);
     }
 
-    figure.snip1278 img {
-      max-width: 60%;
-      vertical-align: top;
+    function resetParticle(i) {
+        const { inner, outer, thickness, baseSpeed } = currentCfg.disk;
+        const i3 = i * 3;
+
+        const r = inner + Math.random() * (outer - inner);
+        pData.initR[i] = r;
+        const theta = Math.random() * Math.PI * 2;
+        const taper = Math.pow(1 - (r - inner) / (outer - inner), 0.6);
+        const y = (Math.random() - 0.5) * thickness * taper * (0.4 + Math.random() * 0.8);
+        pData.pos[i3] = Math.cos(theta) * r;
+        pData.pos[i3 + 1] = y;
+        pData.pos[i3 + 2] = Math.sin(theta) * r;
+
+        const speed = baseSpeed * (1 + (Math.random() - 0.5) * 0.1) * Math.sqrt(currentCfg.gravitationalStrength / Math.max(0.1, r));
+        pData.vel[i3] = -Math.sin(theta) * speed;
+        pData.vel[i3 + 1] = (Math.random() - 0.5) * speed * 0.025;
+        pData.vel[i3 + 2] = Math.cos(theta) * speed;
+
+        const { hueMin, hueMax, lightMin, lightMax, secondHueMin, secondHueMax } = currentTheme.diskParticles;
+        let hue;
+        if (secondHueMin !== undefined && Math.random() < 0.5) {
+             hue = THREE.MathUtils.lerp(secondHueMin, secondHueMax, Math.pow((r - inner) / (outer - inner), 0.5));
+        } else {
+             hue = THREE.MathUtils.lerp(hueMin, hueMax, Math.pow((r - inner) / (outer - inner), 0.5));
+        }
+
+        const light = THREE.MathUtils.lerp(lightMax, lightMin, (r - inner) / (outer - inner));
+        const c = new THREE.Color().setHSL(hue, 1, light);
+        pData.col[i3] = c.r; pData.col[i3 + 1] = c.g; pData.col[i3 + 2] = c.b;
+
+        pData.life[i] = THREE.MathUtils.randFloat(2, 20);
     }
 
-    figure.snip1278 figcaption {
-      position: absolute;
-      width: 25%;
-      right: 50%;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 10px 25px;
+    function createJets() {
+        if (jetsGroup) scene.remove(jetsGroup);
+        jetsGroup = new THREE.Group();
+        const mat = makeJetMaterial(currentTheme.jets.color1, currentTheme.jets.color2);
+        const geo = new THREE.CylinderGeometry(
+            currentCfg.jets.tip,
+            currentCfg.eventHorizonSize * currentCfg.jets.baseRadius,
+            currentCfg.jets.length, 48, 120, true
+        ).translate(0, currentCfg.jets.length / 2, 0);
+
+        const j1 = new THREE.Mesh(geo, mat);
+        const j2 = new THREE.Mesh(geo, mat.clone());
+        j2.rotation.x = Math.PI;
+        j2.material.uniforms.time.value = 0.5;
+
+        jetsGroup.add(j1, j2);
+        scene.add(jetsGroup);
     }
 
-    figure.snip1278 h4 {
-      position: absolute;
-      width: 40%;
-      top: 10px;
-      text-transform: uppercase;
-      font-weight: 400;
-      color: #010512;
-      letter-spacing: 1px;
-      z-index: 1;
+    function makeJetMaterial(color1Hex, color2Hex) {
+        return new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0 },
+                jetColor1: { value: new THREE.Color(color1Hex) },
+                jetColor2: { value: new THREE.Color(color2Hex) },
+                noiseScale: { value: 4.0 },
+                opacityFactor: { value: currentCfg.jets.opacity }
+            },
+            transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide,
+            vertexShader: `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);} `,
+            fragmentShader: `varying vec2 vUv;uniform float time,noiseScale,opacityFactor;uniform vec3 jetColor1,jetColor2;
+                vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
+                vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}
+                vec4 permute(vec4 x){return mod289(((x*34.)+1.)*x);}
+                vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+                float snoise(vec2 v){
+                  const vec2 C=vec2(0.211324865405187,0.366025403784439);
+                  vec2 i=floor(v+dot(v,C.yy));vec2 x0=v-i+dot(i,C.xx);
+                  vec2 i1=(x0.x>x0.y)?vec2(1.,0.):vec2(0.,1.);
+                  vec2 x1=x0-i1+C.xx;vec2 x2=x0-1.+C.yy;i=mod(i,289.);
+                  vec3 p=permute(permute(vec4(i.y+i1.y,i.y,i.y+1.,0.0))+i.x+vec4(i1.x,0.,1.,0.)).xyz;
+                  vec3 m=max(.5-vec3(dot(x0,x0),dot(x1,x1),dot(x2,x2)),0.);m=m*m;m=m*m;
+                  vec3 x=2.*fract(p*(1./41.))-1.;vec3 h=abs(x)-.5;vec3 a0=x-floor(x+.5);
+                  vec3 g;g.x=a0.x*x0.x+h.x*x0.y;g.y=a0.y*x1.x+h.y*x1.y;g.z=a0.z*x2.x+h.z*x2.y;
+                  vec3 norm=taylorInvSqrt(vec4(dot(a0,a0)+dot(h,h),0,0,0)).xxx*m;
+                  return 130.*dot(norm,g)*.007692+0.5;
+                }
+                void main(){
+                    float n1=snoise(vec2(vUv.y*noiseScale*1.2-time*${currentCfg.jets.speed.toFixed(2)}*1.1,
+                                          vUv.x*noiseScale*.8+time*.3));
+                    float n2=snoise(vec2(vUv.y*noiseScale*.6+time*${currentCfg.jets.speed.toFixed(2)}*.9,
+                                          vUv.x*noiseScale*.5-time*.2));
+                    float n=n1*.6+n2*.4;
+                    float core=pow(1.-abs(vUv.x-.5)*1.6,7.);
+                    float len=pow(max(0.,1.-vUv.y*0.95),.13);
+                    float alpha=core*len*(n*.9+.1)*opacityFactor;
+                    alpha=clamp(alpha*(1.+(1.-vUv.y)*.85),0.,1.);
+                    vec3 col=mix(jetColor1,jetColor2,smoothstep(0.,1.,vUv.y*.8+n*.3-.15));
+                    gl_FragColor=vec4(col*(.2+n*1.6),alpha);
+                }`
+        });
     }
 
-    figure.snip1278 p {
-      font-size: 0.7em;
-      font-weight: 500;
-      line-height: 1.6em;
-      margin: 0 0 8px;
+    function buildLensingShader() {
+        const photonRingColor = currentTheme.photonRing || { r: 1.0, g: 0.55, b: 0.15 };
+        return {
+            uniforms: {
+                tDiffuse: { value: null },
+                screenResolution: { value: new THREE.Vector2(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio) },
+                blackHoleScreenPos: { value: new THREE.Vector2(.5, .5) },
+                blackHoleRadiusNDC: { value: 0.05 },
+                distortionStrength: { value: 1.8 },
+                photonRingIntensity: { value: 0.9 },
+                photonRingColor: { value: new THREE.Vector3(photonRingColor.r, photonRingColor.g, photonRingColor.b) }
+            },
+            vertexShader: `varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);} `,
+            fragmentShader: `uniform sampler2D tDiffuse;uniform vec2 screenResolution;uniform vec2 blackHoleScreenPos;
+                uniform float blackHoleRadiusNDC;uniform float distortionStrength;uniform float photonRingIntensity;
+                uniform vec3 photonRingColor;
+                varying vec2 vUv;
+                void main(){
+                    float ar=screenResolution.x/screenResolution.y;
+                    vec2 d=vUv-blackHoleScreenPos;d.x*=ar;
+                    float dist=length(d);float R=blackHoleRadiusNDC;
+                    if(dist<R*.96){gl_FragColor=vec4(0,0,0,1);return;}
+                    float pull=R/dist;
+                    float distortion=pow(pull,distortionStrength*2.5+1.5)*distortionStrength;
+                    vec2 off=normalize(d)*distortion*R*.85;off.x/=ar;
+                    vec4 col=texture2D(tDiffuse,clamp(vUv-off,0.0001,0.9999));
+                    float inner=R*.98,peak=R*1.01,outer=R*1.08;
+                    float ring=smoothstep(inner,peak,dist)*(1.-smoothstep(peak,outer,dist));
+                    col.rgb+=photonRingColor*ring*photonRingIntensity*1.6;
+                    gl_FragColor=col;
+                }`
+        };
     }
 
-    figure.snip1278 .rating {
-      position: absolute;
-      width: 50%;
-      line-height: 44px;
-      color: #0a0101;
-      left: 0;
-      bottom: 0;
-      background-color: rgba(6, 0, 0, 0.719);
+    function onResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
+        if (lensingPass) {
+            lensingPass.uniforms.screenResolution.value.set(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+        }
     }
 
-    figure.snip1278 .price {
-      display: flex;
-      align-items: left ;
-      justify-content: bottom;
-      font-size: 0.85em;
-      color: #0300003e;
+    function animate() {
+        animationFrameId = requestAnimationFrame(animate);
+        const dt = Math.min(0.033, clock.getDelta());
+        controls.update();
+        updateParticles(dt);
+        updateLensing();
+
+        if (jetsGroup && jetsGroup.children.length === 2) {
+            jetsGroup.children[0].material.uniforms.time.value += dt;
+            jetsGroup.children[1].material.uniforms.time.value += dt;
+            jetsGroup.rotation.y += 0.00025;
+        }
+        if (starField) {
+            starField.rotation.y += 0.000015;
+            starField.rotation.x += 0.000004;
+        }
+
+        if (haloMesh && blackHole) {
+            haloMesh.position.copy(blackHole.position);
+            haloMesh.quaternion.copy(camera.quaternion);
+        }
+        composer.render(dt);
     }
 
-    figure.snip1278 .price{
-      color: #0c0c0cfa;
-      margin-right: 5px;
-      position: left;
-      display: inline-block;
-    } 
+    function updateLensing() {
+        if (!blackHole || !lensingPass) return;
 
-    figure.snip1278 .add-to-cart {
-      text-decoration: none;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      font-weight: 600;
-      width: 50%;
-      background-color: rgb(201, 215, 208);
-      font-size: 0.75em;
-      text-transform: uppercase;
-      color: #140404;
-      padding: 10px 0;
+        const wp = blackHole.getWorldPosition(new THREE.Vector3());
+        const ndc = wp.clone().project(camera);
+        lensingPass.uniforms.blackHoleScreenPos.value.set((ndc.x + 1) / 2, (ndc.y + 1) / 2);
+
+        const edgePointWorld = blackHole.localToWorld(new THREE.Vector3(currentCfg.eventHorizonSize, 0, 0));
+        const edgePointNDC = edgePointWorld.project(camera);
+        const R = new THREE.Vector2(edgePointNDC.x, edgePointNDC.y).distanceTo(new THREE.Vector2(ndc.x, ndc.y));
+        lensingPass.uniforms.blackHoleRadiusNDC.value = R;
+
+        lensingPass.uniforms.distortionStrength.value = currentCfg.gravitationalStrength * 0.02 + 0.7;
+        lensingPass.uniforms.photonRingIntensity.value = 1.0 + currentCfg.gravitationalStrength * 0.008;
     }
 
-    figure.snip1278:hover img {
-      opacity: 0.6;
-      transform: scale(1.1);
+    function updateParticles(dt) {
+        if (!pData || !particleSystem) return;
+
+        const { pos, vel, col, life, active, initR } = pData;
+        const captureRadiusSq = Math.pow(currentCfg.eventHorizonSize * 0.8, 2);
+        const escapeRadiusSq = Math.pow(currentCfg.disk.outer * 2, 2);
+
+        for (let i = 0; i < currentCfg.disk.count; i++) {
+            if (!active[i]) {
+                life[i] -= dt;
+                if (life[i] <= 0) {
+                    resetParticle(i);
+                    active[i] = 1;
+                }
+                continue;
+            }
+
+            const i3 = i * 3;
+            let px = pos[i3], py = pos[i3 + 1], pz = pos[i3 + 2];
+            const rSqPlane = px * px + pz * pz;
+            const dSqTotal = px * px + py * py + pz * pz;
+
+            if (dSqTotal < captureRadiusSq || dSqTotal > escapeRadiusSq) {
+                active[i] = 0;
+                life[i] = THREE.MathUtils.randFloat(1.5, 4);
+                pos[i3] = pos[i3 + 1] = pos[i3 + 2] = 1e7;
+                continue;
+            }
+
+            const rPlane = Math.sqrt(rSqPlane);
+            const invRPlane = 1 / Math.max(0.01, rPlane);
+            const forceFactor = currentCfg.gravitationalStrength / (rSqPlane + 1);
+
+            vel[i3] -= px * invRPlane * forceFactor * dt;
+            vel[i3 + 2] -= pz * invRPlane * forceFactor * dt;
+            vel[i3 + 1] += (-py * 0.8 * currentCfg.gravitationalStrength / (rPlane + 1)) * dt;
+            vel[i3 + 1] *= (1 - 0.1 * dt);
+
+            pos[i3] += vel[i3] * dt;
+            pos[i3 + 1] += vel[i3 + 1] * dt;
+            pos[i3 + 2] += vel[i3 + 2] * dt;
+
+            const currentRadius = Math.sqrt(pos[i3]*pos[i3] + pos[i3+2]*pos[i3+2]);
+            const normalizedInitialRadius = (initR[i] - currentCfg.disk.inner) / (currentCfg.disk.outer - currentCfg.disk.inner);
+            const proximityToCenter = 1 - (currentRadius - currentCfg.disk.inner) / (currentCfg.disk.outer - currentCfg.disk.inner);
+
+            const { hueMin, hueMax, lightMin, lightMax, secondHueMin, secondHueMax } = currentTheme.diskParticles;
+            let baseHue;
+             if (secondHueMin !== undefined && Math.random() < 0.5) {
+                 baseHue = THREE.MathUtils.lerp(secondHueMin, secondHueMax, Math.pow(normalizedInitialRadius, 0.5));
+            } else {
+                 baseHue = THREE.MathUtils.lerp(hueMin, hueMax, Math.pow(normalizedInitialRadius, 0.5));
+            }
+            const baseLightness = THREE.MathUtils.lerp(lightMax, lightMin, normalizedInitialRadius);
+            const dynamicHue = (baseHue - proximityToCenter * 0.1 + 1) % 1;
+            const dynamicLightness = Math.min(1, baseLightness + proximityToCenter * 0.45);
+
+            const c = new THREE.Color().setHSL(dynamicHue, 1, dynamicLightness);
+            col[i3] = c.r; col[i3 + 1] = c.g; col[i3 + 2] = c.b;
+        }
+        particleSystem.geometry.attributes.position.needsUpdate = true;
+        particleSystem.geometry.attributes.color.needsUpdate = true;
+
+        if (starField && starField.material) {
+             starField.material.size = 2.6 + Math.sin(clock.elapsedTime * 4) * 0.18;
+        }
     }
 
-    figure.snip1278:hover .add-to-cart {
-      background-color: rgba(0, 0, 0, 0.5);
+    function setupThemeSelector() {
+        const container = document.getElementById('themeButtons');
+        container.innerHTML = '';
+
+        Object.keys(themes).forEach(themeKey => {
+            const theme = themes[themeKey];
+            const button = document.createElement('button');
+            button.textContent = theme.name;
+            button.className = `
+                w-full px-4 py-2.5
+                text-sm font-medium text-white/80
+                bg-white/5 hover:bg-white/10
+                border border-white/10 hover:border-white/20
+                rounded-lg shadow-md
+                focus:outline-none focus:ring-2 ${theme.focusRingColor} focus:ring-opacity-75
+                transition-all duration-200 ease-in-out
+                transform hover:-translate-y-px active:translate-y-0 active:scale-[0.98]
+            `;
+            button.onclick = () => applyTheme(themeKey);
+            container.appendChild(button);
+        });
     }
-  </style>
-</head>
-<body>
 
-  <h3>call me 7770984861 for selling and buy </h3>
- 
-  <div class="product-grid">
+    function applyTheme(themeKey) {
+        if (!themes[themeKey]) {
+            console.warn(`Theme "${themeKey}" not found.`);
+            return;
+        }
+        currentTheme = themes[themeKey];
+        console.log(`Applying theme: ${currentTheme.name}`);
 
-    <figure class="snip1278">
-      <h4>Light Top</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20155847.png" alt="Light Top">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>100₹</h3></div>
-      </figcaption>
-      <h3></h3>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
+        if (haloMesh) {
+            haloMesh.material.uniforms.c1.value.setHex(currentTheme.halo.c1);
+            haloMesh.material.uniforms.c2.value.setHex(currentTheme.halo.c2);
+            haloMesh.material.uniforms.strength.value = currentTheme.halo.strength;
+        }
 
-    <figure class="snip1278">
-      <h4>Duffle Coat</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181639.png" alt="Duffle Coat">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>100₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    
-    </figure>
+        if (jetsGroup) {
+             jetsGroup.children.forEach(jet => {
+                if(jet.material.uniforms.jetColor1) jet.material.uniforms.jetColor1.value.setHex(currentTheme.jets.color1);
+                if(jet.material.uniforms.jetColor2) jet.material.uniforms.jetColor2.value.setHex(currentTheme.jets.color2);
+             });
+        }
+        createStarField();
+        initParticles();
 
-    <figure class="snip1278">
-      <h4>Blue Jeans</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181614.png" alt="Blue Jeans">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p>.</p>
-        <div class="price"><h3> 100₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-  </div>
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
- 
-  
-  <div class="product-grid">
-
-    <figure class="snip1278">
-      <h4>Light Top</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20180437.png" alt="Light Top">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>100₹</h3></div>
-      </figcaption>
-      <h1> </h1>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Duffle Coat</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20180459.png" alt="Duffle Coat">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>200₹</h3></div>
-      </figcaption>
-      
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Blue Jeans</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20180745.png" alt="Blue Jeans">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>100₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-  </div>
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  
-  <div class="product-grid">
-
-    <figure class="snip1278">
-      <h4>Light Top</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181639.png" alt="Light Top">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>300₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Duffle Coat</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181026.png" alt="Duffle Coat">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>200₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Blue Jeans</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181050.png" alt="Blue Jeans">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>200₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-  </div>
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  
-  
-  <div class="product-grid">
-
-    <figure class="snip1278">
-      <h4>Light Top</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181247.png" alt="Light Top">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>300₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Duffle Coat</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20182227.png" alt="Duffle Coat">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p>I</p>
-        <div class="price"><h3>200₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Blue Jeans</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20202631.png" alt="Blue Jeans">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>300₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-  </div>
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  
-  <div class="product-grid">
-
-    <figure class="snip1278">
-      <h4>Light Top</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20181639.png" alt="Light Top">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p></p>
-        <div class="price"><h3>100₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-    <figure class="snip1278">
-      <h4>Duffle Coat</h4>
-      <div class="image">
-        <img src="https://assets.onecompiler.app/42xjgjamf/433cm78yc/Screenshot%202025-05-01%20182535.png" alt="Duffle Coat">
-      </div>
-      <div class="rating"><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i></div>
-      <figcaption>
-        <p>.</p>
-        <div class="price"><h3>100₹</h3></div>
-      </figcaption>
-      <a href="#" class="add-to-cart">Add to Cart</a>
-    </figure>
-
-   
-
-  </div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-  <div style="border-top: 1px solid white; margin: 20px 0;"></div>
-
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(".add-to-cart").on("click", function (e) {
-      e.preventDefault();
-      const productName = $(this).siblings("h4").text();
-      alert(productName + " added to cart!");
-    });
-  </script>
-
-</body>
-</html>
+        if (lensingPass && currentTheme.photonRing) {
+            lensingPass.uniforms.photonRingColor.value.set(currentTheme.photonRing.r, currentTheme.photonRing.g, currentTheme.photonRing.b);
+        }
+        console.log("Theme applied. Halo, Jets, Stars, Particles should be updated.");
+    }
+</script>
